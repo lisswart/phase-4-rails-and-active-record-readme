@@ -18,9 +18,8 @@ dependencies before coding along.
 > **Note:** This code-along has been set up as a Rails app for you, so you will
 > be running all the terminal commands inside the lesson directory.
 
-## Video Walkthrough
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AYr7juVVz7g?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+<!-- ## Video Walkthrough -->
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/AYr7juVVz7g?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
 
 ## Active Record's Role
 
@@ -83,11 +82,11 @@ particular, we'll want to know our cheese's _name_, its _price_ in dollars, and
 whether it's a _best seller_. In the database, our `cheeses` should look something
 like this:
 
-| `id` | `name` | `price` | `is_best_seller` |
-| --- | --- | --- | --- |
-| 1 | Cheddar | 3 | true |
-| 2 | Pepper Jack | 4 | true |
-| 3 | Limburger | 8 | false |
+| `id` | `name`      | `price` | `is_best_seller` |
+| ---- | ----------- | ------- | ---------------- |
+| 1    | Cheddar     | 3       | true             |
+| 2    | Pepper Jack | 4       | true             |
+| 3    | Limburger   | 8       | false            |
 
 To set this up in our Rails app, we'll need a few things:
 
@@ -103,8 +102,8 @@ Rails gives us an easy way of creating both of these things using a
 Make sure you've navigated into the directory for this lesson, then run this
 command in your terminal:
 
-```sh
-rails g model Cheese name price:integer is_best_seller:boolean --no-test-framework
+```console
+$ rails g model Cheese name price:integer is_best_seller:boolean --no-test-framework
 ```
 
 We're telling Rails to generate the code for a Cheese model, with a `name`
@@ -153,8 +152,8 @@ create this table for us and generate a schema file.
 
 Run the migration by running:
 
-```sh
-rails db:migrate
+```console
+$ rails db:migrate
 ```
 
 For a refresher on migrations, see [this documentation][migrations]. This
@@ -202,8 +201,8 @@ our new Cheese model:
 Cheese.all
 ```
 
-If everything is set up properly, you will see that it all the cheeses we
-created in the seed file! You can test out some other methods here as well:
+If everything is set up properly, you will see that it returns all the cheeses
+we created in the seed file! You can test out some other methods here as well:
 
 ```rb
 Cheese.last
@@ -228,8 +227,8 @@ def summary
 end
 ```
 
-You can test this out in this new method in the Rails console by running
-a query on the record we created, such as:
+Go ahead and test this new method out in the Rails console by running a query on
+one of our records, for example:
 
 ```rb
 Cheese.last.summary
@@ -238,13 +237,12 @@ Cheese.last.summary
 > If you didn't exit the Rails console before adding the new Cheese#summary
 > method, you can get the console to reload all your code by running `reload!`.
 
-It should return the summary value of the last cheese we created: `"Limburger:
-$8"`.
+It should return the summary value of the last cheese we created: `"Limburger: $8"`.
 
 As you may have noticed, we did not have to create a controller, route, view,
 etc. in order to get the `Cheese` model working. The data aspect of the
 application can work separately from the view and data flow logic. This level of
-abstraction makes it possible to test the behavior of our models without 
+abstraction makes it possible to test the behavior of our models without
 having them strongly coupled to how they are rendered to the user.
 
 ## Conclusion
@@ -254,6 +252,15 @@ understanding of Active Record models in Rails. Active Record is a powerful tool
 that enables developers to focus on the logic of their applications while
 streamlining processes such as connecting to the database, running queries, and
 much more.
+
+## Check For Understanding
+
+Before you move on, make sure you can answer the following questions:
+
+1. What are some of the ways that using Active Record in Rails makes it easier
+   to interact with model data stored in a database?
+2. What are the advantages of using a Rails generator to create our models?
+3. Why is it important for migration file names to have a timestamp prepended?
 
 [scopes]: http://api.rubyonrails.org/classes/ActiveRecord/Scoping/Named/ClassMethods.html
 [validations]: http://api.rubyonrails.org/classes/ActiveModel/Validations/ClassMethods.html
